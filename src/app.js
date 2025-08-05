@@ -1,11 +1,23 @@
-import "bootstrap";
-import "./style.css";
+let pronoun = ['the', 'our'];
+let adj = ['great', 'big'];
+let noun = ['jogger', 'racoon'];
 
+function generateDomains() {
+  const list = document.getElementById('domainList');
+  list.innerHTML = ''; // Limpiar lista anterior
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+  for (let p of pronoun) {
+    for (let a of adj) {
+      for (let n of noun) {
+        let domain = p + a + n + '.com';
+        console.log(domain);
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-};
+        let li = document.createElement('li');
+        li.textContent = domain;
+        list.appendChild(li);
+      }
+    }
+  }
+}
+
+document.getElementById('generate').addEventListener('click', generateDomains);
